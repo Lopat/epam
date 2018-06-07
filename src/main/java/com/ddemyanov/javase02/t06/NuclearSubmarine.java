@@ -1,8 +1,11 @@
 package com.ddemyanov.javase02.t06;
 
+import com.ddemyanov.javase02.t07.MyAnno;
+
+@MyAnno("Atomic")
 public class NuclearSubmarine {
 
-    private Engine engine;
+    private final Engine engine;
 
     NuclearSubmarine() {
         engine = new Engine();
