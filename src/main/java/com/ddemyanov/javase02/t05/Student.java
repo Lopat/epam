@@ -1,6 +1,11 @@
 package com.ddemyanov.javase02.t05;
 
-public class Student {
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
-    /* TODO */
+@Data
+@AllArgsConstructor
+class Student {
+    private String name;
+
 }
