@@ -1,0 +1,30 @@
+~~~~~Map~~~~~
+
+~~~~~ ~~~~~
+
+~~~~~Методы~~~~~
+Object remove(Object )
+boolean remove(Object,Object )
+Object get(Object )
+Object put(Object, Object )
+boolean equals(cObject )
+Collection values( )
+int hashCode( )
+void clear( )
+boolean isEmpty( )
+Object replace(Object, Object )
+boolean replace(Object, Object, Object )
+void replaceAll(BiFunction )
+int size( )
+Set entrySet( )
+void putAll(Map )
+Object putIfAbsent(Object, Object )
+Set keySet( )
+Object compute(Object, BiFunction )
+Object computeIfAbsent(Object, Function )
+Object computeIfPresent(Object, BiFunction )
+boolean containsKey(Object )
+boolean containsValue(Object )
+void forEach(BiConsumer )
+Object getOrDefault(Object, Object )
+Object merge(Object, Object, BiFunction )

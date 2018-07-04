@@ -1,0 +1,21 @@
+~~~~~Queue~~~~~
+
+~~~~~ ~~~~~
+
+~~~~~Методы~~~~~
+Object element( ) - возвращает, но не удаляет верхушку очереди.
+Object peek( )- возвращает, но не удаляет верхушку очереди.
+boolean offer(Object )
+boolean add(Object )
+Object remove( ) - удаляет верхушку очереди и возвращает ее.
+Object poll( ) - удаляет верхушку очереди и возвращает ее.
+boolean remove(Object ) - удаляет объект из коллекции.
+void clear( ) - очищает коллекцию.
+boolean contains(Object ) - проверяет, содержит ли коллекция объект.
+boolean isEmpty( ) - проверяет пустоту коллекции.
+Iterator iterator( ) - возвращает итератор.
+int size( ) - возвращает размер коллекции.
+Object[] toArray( ) - преобразует в массив.
+boolean remove(Object o) - удаляет объект о из коллекции.
+boolean removeAll(Collection c) - удаляет все элементы другой коллекции из текущей.
+boolean retainAll(Collection c) - (retain — сохранить). Выполняет операцию "пересечение множеств".
