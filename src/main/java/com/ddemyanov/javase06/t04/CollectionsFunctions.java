@@ -1,10 +1,8 @@
 package com.ddemyanov.javase06.t04;
 
 import java.lang.reflect.Method;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.Queue;
+import java.util.*;
+import java.util.concurrent.DelayQueue;
 
 /**
  * Заполните таблицу.
@@ -15,10 +13,7 @@ import java.util.Queue;
  * Map
  */
 public class CollectionsFunctions {
-    /**
-     * Представляет собой набор значений, без индекса, аналог математического множества, благодаря чему на позволяет
-     * хранить в коллекции дубликаты.
-     */
+
     public static void main(String[] args) {
         Method[] methods = Map.class.getMethods();
         for (Method m : methods) {
