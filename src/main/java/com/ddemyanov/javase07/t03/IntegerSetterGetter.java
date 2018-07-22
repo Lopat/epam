@@ -58,6 +58,7 @@ public class IntegerSetterGetter extends Thread {
 
 
     private void setIntegersIntoResource() {
+
         synchronized (resource) {
             Integer number = rand.nextInt(100);
             resource.setElement(number);
