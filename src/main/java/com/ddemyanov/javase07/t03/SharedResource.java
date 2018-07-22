@@ -7,7 +7,7 @@ public class SharedResource {
 
     private List<Integer> list;
 
-    public SharedResource() {
+    SharedResource() {
         list = new ArrayList<Integer>();
     }
 
@@ -15,7 +15,7 @@ public class SharedResource {
         list.add(element);
     }
 
-    public Integer getELement() {
+    public Integer getElement() {
         if (list.size() > 0) {
             return list.remove(0);
         }

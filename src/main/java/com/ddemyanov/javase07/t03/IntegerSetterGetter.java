@@ -3,11 +3,11 @@ package com.ddemyanov.javase07.t03;
 import java.util.Random;
 
 public class IntegerSetterGetter extends Thread {
-    private SharedResource resource;
+    private final SharedResource resource;
     private boolean run;
     private Random rand = new Random();
 
-    public IntegerSetterGetter(String name, SharedResource resource) {
+    IntegerSetterGetter(String name, SharedResource resource) {
         super(name);
         this.resource = resource;
         run = true;
@@ -40,12 +40,12 @@ public class IntegerSetterGetter extends Thread {
         synchronized (resource)
         {
             System.out.println("Поток " + getName() + " хочет извлечь число.");
-            number = resource.getELement();
+            number = resource.getElement();
             while (number == null) {
                 System.out.println("Поток " + getName() + " ждет пока очередь заполнится.");
                 resource.wait();
                 System.out.println("Поток " + getName() + " возобновил работу.");
-                number = resource.getELement();
+                number = resource.getElement();
             }
             System.out.println("Поток " + getName() + " извлек число " + number);
         }

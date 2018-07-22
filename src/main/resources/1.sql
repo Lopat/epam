@@ -1,0 +1,1 @@
+CREATE TABLE students (id IDENTITY, name varchar, surname varchar, groupnum int);
