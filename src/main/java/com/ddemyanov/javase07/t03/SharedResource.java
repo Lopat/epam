@@ -3,22 +3,19 @@ package com.ddemyanov.javase07.t03;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SharedResource {
+class SharedResource {
 
-    private List<Integer> list;
+    private List <Integer> list;
 
     SharedResource() {
-        list = new ArrayList<Integer>();
+        list = new ArrayList <>();
     }
 
-    public void setElement(Integer element) {
+    void setElement(Integer element) {
         list.add(element);
     }
 
-    public Integer getElement() {
-        if (list.size() > 0) {
-            return list.remove(0);
-        }
-        return null;
+    Integer getElement() {
+        return (!list.isEmpty()) ? list.remove(0) : null;
     }
 }

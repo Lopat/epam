@@ -1,8 +1,11 @@
 package com.ddemyanov.javase07.t03;
 
+import lombok.SneakyThrows;
+
 import java.util.Random;
 
 public class IntegerSetterGetter extends Thread {
+
     private final SharedResource resource;
     private boolean run;
     private Random rand = new Random();
@@ -13,49 +16,52 @@ public class IntegerSetterGetter extends Thread {
         run = true;
     }
 
-    public void stopThread() {
+    void stopThread() {
         run = false;
     }
 
     public void run() {
-        int action;
-        try {
-            while (run) {
-                action = rand.nextInt(1000);
-                if (action % 2 == 0) {
-                    getIntegersFromResource();
-                } else {
-                    setIntegersIntoResource();
-                }
-            }
-            System.out.println("Поток " + getName() + " завершил работу.");
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+
+        while (run) {
+            if (rand.nextBoolean()) {getIntegersFromResource();}
+            else {setIntegersIntoResource();}
         }
+        System.out.printf("Поток %s завершил работу.%n", getName());
+
     }
 
-    private void getIntegersFromResource() throws InterruptedException {
+    @SneakyThrows
+    private void getIntegersFromResource() {
         Integer number;
 
-        synchronized (resource)
-        {
-            System.out.println("Поток " + getName() + " хочет извлечь число.");
+        synchronized (resource) {
+            System.out.printf("Поток %s хочет извлечь число.%n", getName());
             number = resource.getElement();
-            while (number == null) {
-                System.out.println("Поток " + getName() + " ждет пока очередь заполнится.");
-                resource.wait();
-                System.out.println("Поток " + getName() + " возобновил работу.");
+
+            int counter = 0;
+            while (number == null && counter < 5) {
+                counter++;
+                System.out.printf("Поток %s ждет пока очередь заполнится.%n", getName());
+                resource.wait(10);
+                System.out.printf("Поток %s возобновил работу.%n", getName());
                 number = resource.getElement();
             }
-            System.out.println("Поток " + getName() + " извлек число " + number);
+            if (number == null) {
+                System.out.printf("Поток %s не извлек число.%n", getName());
+                setIntegersIntoResource(); //!
+            }
+            else {
+                System.out.printf("Поток %s извлек число %d%n",getName(), number);
+            }
         }
     }
 
-    private void setIntegersIntoResource() throws InterruptedException {
-        Integer number = rand.nextInt(500);
+
+    private void setIntegersIntoResource() {
         synchronized (resource) {
+            Integer number = rand.nextInt(100);
             resource.setElement(number);
-            System.out.println("Поток " + getName() + " записал число " + number);
+            System.out.printf("Поток %s записал число %d%n", getName(), number);
             resource.notify();
         }
     }
